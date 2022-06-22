@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/blackgirlfilmsch/public_html/bgfs-laravel/
+    - /bin/cp * $DEPLOYPATH
