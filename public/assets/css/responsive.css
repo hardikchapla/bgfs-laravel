@@ -1,0 +1,652 @@
+
+@media screen and (max-width: 1024px) {
+
+    .menu-toggler{
+        visibility: visible;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        z-index: 999;
+        width: 300px;
+        height: 100vh;
+    }
+    .sidebar-open{
+        left: 0;
+    }
+    main {
+        width: calc(100% - 0px);
+    }
+    .title{
+        padding: 0 15px;
+    }
+    .our-courses {
+        padding: 0 18px 0 18px;
+    }
+    .lesson-next-prev-btns a {
+        width: 211px;
+    }
+    .leave-a-cmnt-box textarea {
+        width: 265px;
+    }
+    #zero {
+        top: 140px;
+        left: 121px;
+    }
+    #hundred {
+        top: 140px;
+        right: 95px;
+    }
+    .key_ind_value {
+        left: 135px;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .login-register-link {
+        padding: 50px 0 0;
+    }
+    .login-wrapper {
+        padding: 50px 40px;
+    }
+    .register-now-btn {
+        top: 50px;
+    }
+    .image-overlay {
+        max-width: 100%;
+        height: 650px;
+    }
+    .login-form {
+        padding-top: 100px !important;
+    }
+
+    .our-courses .courses-cards .left-img {
+        width: 220px;
+    }
+    .our-courses .courses-cards .left-img img{
+        width: 220px;
+    }
+    .our-courses .courses-cards {
+        align-items: start;
+    }
+    .our-courses .courses-cards .body {
+        width: calc(100% - 220px);
+        padding: 0 0 0 30px;
+    }
+    .about-lesson {
+        padding-left: 0px;
+        padding-top: 20px;
+    }
+    .video-player-box {
+        padding-right: 0px;
+    }
+
+    #hundred {
+        top: 98px;
+        right: 60px;
+    }
+    #zero {
+        top: 98px;
+        left: 83px;
+    }
+    .projects-completion {
+        min-height: 350px;
+        box-shadow: 0px 3px 4px rgba(62, 73, 84, 0.04);
+    }
+    .key_ind_value {
+        left: 100px;
+    }
+    .key_indicator #key_indicator {
+        transform: scale(0.7);
+    }
+    .lesson-plam-cards-1 .left-img-1 > img {
+        width: 220px;
+    }
+    .lesson-plam-cards-1 .left-img-1 {
+        width: 220px;
+    }
+    .lesson-plam-cards-1-sub-1 .body {
+        width: calc(100% - 220px);
+        padding: 0 0 0 30px;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    h3{
+        font-size: 26px;
+    }
+    .login-register-link {
+        padding: 30px 0 0;
+    }
+    .login-wrapper {
+        padding: 30px 15px;
+    }
+    .register-now-btn {
+        top: 50px;
+    }
+    .image-overlay {
+        height: 350px;
+    }
+    .image-overlay .content {
+        padding: 50px 15px;
+    }
+    .login-form {
+        padding-top: 100px !important;
+        padding: 0;
+    }
+    .login-form form h6 .bar {
+        width: 110px;
+    }
+    .login-form form input {
+        height: 40px;
+        padding: 7px 15px;
+    }
+    .login-form form .button {
+        height: 40px;
+        margin-top: 30px;
+    }
+    .login-form h2 {
+        font-size: 28px;
+        line-height: unset;
+        margin-bottom: 15px;
+    }
+    .top-bar .user {
+        margin-right: 0px;
+    }
+    .our-courses .courses-cards {
+        flex-direction: column;
+    }
+    .top-bar .switch-courses {
+        margin-right: 17px;
+        margin-left: 55px;
+        margin-bottom: 15px;
+    }
+    .our-courses .courses-cards .left-img {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .our-courses .courses-cards .left-img img {
+        width: 100%;
+    }
+    .our-courses .courses-cards .body {
+        width: 100%;
+        padding: 0;
+    }
+    .our-courses .courses-cards {
+        padding: 25px 25px 60px 25px;
+    }
+    footer {
+        padding: 23px;
+    }
+    .trial-course {
+        padding: 25px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .trial-course .lesson-projects {
+        margin-top: 20px;
+    }
+    .upcoming-meetings {
+        padding: 25px;
+    }
+    .assignment-vid-cards {
+        padding: 34px 25px 60px;
+    }
+    .user-icon-box .user ~ .user-dropdown,
+    .user-icon-box .notification ~ .user-dropdown {
+        position: absolute;
+        top: 59px;
+        right: auto;
+        left: 0;
+        max-width: 230px !important;
+    }
+    .user-icon-box .user-dropdown .user-notifications {
+        width: 230px !important;
+    }
+    .course-details {
+        width: 100%;
+        padding: 15px;
+    }
+    .about-lesson .nav-item .nav-link {
+        width: 95px;
+        height: 91px;
+        margin-right: 5px;
+    }
+    .about-lesson .nav-pills{
+        flex-wrap: nowrap;
+    }
+    .video-links .video-btn, .video-links .link-btn {
+        margin-bottom: 15px;
+    }
+    .video-links {
+        padding-top: 15px;
+    }
+    .lecture-cmnt-form textarea {
+        margin-top: 20px;
+    }
+    .lecture-cmnt-form button[type="submit"] {
+        margin-top: 10px;
+    }
+    .lesson-next-prev-btns {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .lesson-next-prev-btns a {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .lesson-lecture-info {
+        margin-bottom: 10px;
+    }
+    .student-intro {
+        margin-bottom: 22px;
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    .student-intro img {
+        margin-right: 0px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    .leave-a-cmnt-box {
+        margin-top: 15px;
+    }
+    .student-comments .cmnts-inner-btns {
+        width: 100%;
+        height: 40px;
+        margin-top: 15px;
+        margin-right: 0px;
+    }
+    .leave-a-cmnt-box textarea {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    .student-comments .d-flex {
+        padding: 0 15px;
+    }
+    .student-comments {
+        padding: 15px 0;
+        margin-bottom: 13px;
+    }
+    .assignment-card .assignment-btns {
+        width: 112px;
+        margin-right: 10px;
+    }
+    .assignment-card {
+        padding: 15px;
+    }
+    #zero {
+        top: 75px;
+        left: 61px;
+    }
+    #hundred {
+        top: 75px;
+        right: 34px;
+    }
+    .key_ind_value {
+        top: -8px;
+        left: 80px;
+    }
+    .key_indicator #key_indicator {
+        transform: scale(0.5);
+    }
+    .completion-circle #half_circle path {
+        stroke: #CFD8DC;
+        stroke-width: 3px;
+        stroke-dasharray: 63;
+        transform: scale(1.5) translate(-18px,-10px);
+        stroke-dashoffset: 0;
+        stroke-linecap: round;
+    }
+    .login-form form .password-warning {
+        padding: 15px 0 0;
+    }
+    .login-form form .password-warning svg{
+        width: 30px;
+        height: 30px;
+    }
+
+    .vjs-play-control {
+        left: 27% !important;
+    }
+    .vjs_video_3-dimensions {
+        height: 215px;
+    }
+    .lesson-plam-cards-1-sub-1  {
+        flex-direction: column;
+    }
+    .lesson-plam-cards-1 .left-img-1 > img {
+        width: 100%;
+    }
+    .lesson-plam-cards-1 .left-img-1{
+        width: 100%;
+        margin-bottom: 25px;
+    }
+    .lesson-plam-cards-1 .body {
+        width: 100%;
+        padding: 0;
+    }
+    .lesson-plam-cards-1-sub-2 .assessment-number h5 {
+        margin-bottom: 15px;
+    }
+    .lesson-plam-cards-assessment-1 {
+        display: block;
+    }
+    .lesson-plam-cards-1-sub-2 .assignment-btns {
+        padding: 0 38px;
+        margin-top: 15px;
+    }
+    .lesson-trial-course-1 {
+        padding: 25px 25px;
+    }
+    .undone-assignment-box-1 img {
+        margin-bottom: 15px;
+    }
+    .undone-assignment-btns {
+        margin-top: 15px;
+    }
+    .assignment-tab-text-2-sub-2 {
+        display: block;
+    }
+    .assignment-tab-1 button {
+        width: 100px;
+    }
+    .assignment-tab-1 button.active::after {
+        width: 100px;
+    }
+    .assignment-tab-text-2-sub-2-1 button {
+        padding: 14px 0 15px 10px;
+        margin-right: 6px;
+        width: 48%;
+    }
+    .assignment-tab-text-2-sub-2 h1 {
+        margin-top: 15px;
+    }
+    .project-section-tab-1 button {
+        width: 100% !important;
+    }
+    .project-section-tab-1 button.active::after {
+        width: 100% !important;
+    }
+    .project-section-tab-1 li.nav-item {
+        margin-bottom: 15px !important;
+        position: relative;
+    }
+    .project-section-tab-1 .nav {
+        display: block;
+    }
+    .project-section-tab-1 {
+        padding-right: 19px;
+    }
+    .profile-project-section-1 {
+        display: block;
+    }
+    .profile-project-section-1-sub-1 {
+        width: 100%;
+        border-bottom: 1px solid var(--sub-text-color);
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .profile-project-section-1-sub-2 {
+        width: 100%;
+        border-bottom: 1px solid var(--sub-text-color);
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+    .profile-project-section-1-sub-3 {
+        width: 100%;
+    }
+    .profile-line {
+        display: none;
+    }
+    .notifications-content {
+        margin-left: 0;
+        margin-top: 14px;
+        margin-bottom: 27px;
+    }
+    .edit-profile-notifications-1 {
+        display: block;
+        text-align: center;
+    }
+    .notifications-btn-1 {
+        display: inline-block;
+        margin-left: 15px;
+        padding-left: 45px;
+        font-weight: 800;
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .notifications-btn-1 .checkmark:after {
+        left: 12px;
+        top: 6px;
+        width: 9px;
+        height: 18px;
+    }
+    .checkmark {
+        height: 35px;
+        width: 35px;
+    }
+    .notifications-save-message {
+        position: relative;
+        margin-bottom: 17px;
+    }
+    .profile-project-section-2-sub-1 li.nav-item {
+        margin-bottom: 0 !important;
+        position: relative;
+        margin-bottom: 23px !important;
+    }
+    .assessment-section-3-sub-1 {
+        width: 85%;
+    }
+    .assessment-section-3-sub-2 img {
+        height: 29px;
+    }
+    .assessment-section-3 h1 {
+        font-size: 14px;
+        line-height: 17px;
+    }
+    .assessment-section-3 h2 {
+        margin-top: 8px;
+    }
+    .assessment-section-1 {
+        display: block;
+    }
+    .assessment-section-1 > a {
+        margin-top: 9px;
+        margin-bottom: 16px;
+    }
+    .assessment-start-section-1 {
+        display: block;
+    }
+    .assessment-start-section-1-left-1 {
+        display: block;
+    }
+    .assessment-line {
+        display: none;
+    }
+    .assessment-start-1-left-2 {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    .assessment-start-section-1-right p {
+        text-align: left;
+    }
+    .assessment-start-section-1-right {
+        margin-top: 25px;
+    }
+    .assessment-start-section-1-left > h1 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    .assessment-start-section-2-sub-1 h1 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .assessment-submit-btn {
+        position: relative;
+        bottom: 0;
+    }
+    .assessment-start-section-2 {
+        height: auto;
+    }
+    .assessment-results-2 {
+        padding: 20px 6px;
+    }
+    .assessment-results-2 ul li {
+        font-size: 9px;
+        width: auto;
+    }
+    .assessment-results-3 {
+        padding: 12px 6px;
+    }
+    .assessment-results-3 ul li {
+        font-size: 9px;
+        width: auto;
+    }
+    .assessment-results-topic-1 p {
+        font-size: 7px;
+        line-height: 11px;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 426px){
+    .user-icon-box .notification ~ .user-dropdown {
+        right: 17px !important;
+        left: auto !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 1024px){
+    .profile-project-section-1-sub-1 h1 {
+        font-size: 9px;
+    }
+    .profile-project-section-1-sub-1 h2 {
+        font-size: 9px;
+    }
+    .profile-line {
+        margin: 0px 15px;
+    }
+    .profile-socila-1 {
+        width: 100%;
+    }
+    .profile-project-section-1-sub-2 {
+        width: 50%;
+    }
+    .profile-project-section-1-sub-2 h3 {
+        font-size: 12px;
+    }
+    .profile-project-section-1-sub-2 h4 {
+        font-size: 11px;
+    }
+    .profile-project-section-1-sub-3 p {
+        font-size: 11px;
+        line-height: 15px;
+    }
+    .profile-project-section-1-sub-3 h5 {
+        font-size: 12px;
+    }
+    .notifications-btn-1 {
+        margin: 44px 0;
+        display: block;
+    }
+    .chatting-section-left {
+        margin-bottom: 25px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .chatting-section-left-sub-1 button {
+        width: 83px;
+        font-size: 0;
+        padding: 11px 0;
+    }
+    .chatting-section-left-sub-1 h2 {
+        font-size: 11px !important;
+    }
+    .chatting-section-left-sub-1 button.active::after {
+        width: 83px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1433px){
+    .profile-project-section-1-sub-1 h1 {
+        font-size: 9px;
+    }
+    .profile-project-section-1-sub-1 h2 {
+        font-size: 9px;
+    }
+    .profile-line {
+        margin: 0px 15px;
+    }
+    .profile-socila-1 {
+        width: 100%;
+    }
+    .profile-project-section-1-sub-2 {
+        width: 50%;
+    }
+    .profile-project-section-1-sub-2 h3 {
+        font-size: 12px;
+    }
+    .profile-project-section-1-sub-2 h4 {
+        font-size: 11px;
+    }
+    .profile-project-section-1-sub-3 p {
+        font-size: 11px;
+        line-height: 15px;
+    }
+    .profile-project-section-1-sub-3 h5 {
+        font-size: 12px;
+    }
+    .notifications-btn-1 {
+        margin: 19px 0;
+    }
+    .chatting-section-left-sub-1 button {
+        width: 60px;
+        font-size: 0;
+        padding: 11px 0;
+    }
+    .chatting-section-left-sub-1 h2 {
+        font-size: 9px !important;
+    }
+    .chatting-section-left-sub-1 button.active::after {
+        width: 60px;
+    }
+    .friend-drawer {
+        padding: 15px 7px;
+    }
+    .chatting-section-left-sub-2 .text h6 {
+        font-size: 9px;
+    }
+    .chatting-section-left-sub-2 .friend-drawer .text p {
+        height: 20px;
+        overflow: hidden;
+    }
+    .chatting-section-left .user-live-dot {
+        left: 51px;
+    }
+    .chat-search-box .input-group {
+        padding: 0px 6px;
+    }
+    .NewGroupCreatesection {
+        padding: 15px 7px;
+    }
+}
+
+@media (min-width: 620px){
+.chatting-new-group-section-1 .modal-dialog {
+    max-width: 620px;
+}
+}
