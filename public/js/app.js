@@ -2654,6 +2654,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2663,11 +2664,21 @@ __webpack_require__.r(__webpack_exports__);
       last_name: '',
       email: '',
       phone: '',
-      password: ''
+      password: '',
+      terms_condition: false
     };
   },
   mounted: function mounted() {},
   methods: {
+    togglers: function togglers() {
+      var x = document.getElementById("password");
+
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    },
     _register_user: function _register_user(e) {
       var _this = this;
 
@@ -21913,13 +21924,80 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(6),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "form-check d-flex align-items-center mt-2",
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.terms_condition,
+                              expression: "terms_condition",
+                            },
+                          ],
+                          staticClass: "form-check-input",
+                          attrs: { type: "checkbox", id: "termsAndConditions" },
+                          domProps: {
+                            checked: Array.isArray(_vm.terms_condition)
+                              ? _vm._i(_vm.terms_condition, null) > -1
+                              : _vm.terms_condition,
+                          },
+                          on: {
+                            change: function ($event) {
+                              var $$a = _vm.terms_condition,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.terms_condition = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.terms_condition = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.terms_condition = $$c
+                              }
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label my -0",
+                            attrs: { for: "termsAndConditions" },
+                          },
+                          [
+                            _vm._v(
+                              "\n                                    I agree to the Terms and Conditions & Privacy Policy.\n                                "
+                            ),
+                          ]
+                        ),
+                      ]
+                    ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
                         staticClass: "button",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          disables:
+                            !_vm.first_name ||
+                            !_vm.last_name ||
+                            !_vm.phone ||
+                            !_vm.terms_condition,
+                        },
                         on: {
                           click: function ($event) {
                             _vm.step = 2
@@ -21933,7 +22011,7 @@ var render = function () {
               _vm._v(" "),
               _vm.step == 2
                 ? _c("div", [
-                    _vm._m(7),
+                    _vm._m(6),
                     _vm._v(" "),
                     _c("label", { attrs: { for: "email" } }, [
                       _vm._v("Email Address *"),
@@ -21993,6 +22071,7 @@ var render = function () {
                         {
                           staticClass: "show-hide-pass",
                           attrs: { type: "button" },
+                          on: { click: _vm.togglers },
                         },
                         [
                           _c(
@@ -22021,41 +22100,35 @@ var render = function () {
                       ),
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "d-flex justify-content-between" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "button",
-                            attrs: { type: "submit", disabled: _vm.loading },
-                          },
-                          [
-                            _vm.loading
-                              ? _c("i", {
-                                  staticClass: "fa fa-spinner fa-spin",
-                                })
-                              : _vm._e(),
-                            _vm._v("  Submit"),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "button",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function ($event) {
-                                _vm.step = 1
-                              },
+                    _c("div", { staticClass: "row mt-5" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "button col m-1",
+                          attrs: { type: "submit", disabled: _vm.loading },
+                        },
+                        [
+                          _vm.loading
+                            ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
+                            : _vm._e(),
+                          _vm._v(" Submit"),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "button col m-1",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function ($event) {
+                              _vm.step = 1
                             },
                           },
-                          [_vm._v("Go Back")]
-                        ),
-                      ]
-                    ),
+                        },
+                        [_vm._v("Go Back")]
+                      ),
+                    ]),
                   ])
                 : _vm._e(),
             ]),
@@ -22153,34 +22226,6 @@ var staticRenderFns = [
       _vm._v("Register"),
       _c("span", { staticClass: "bar" }),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "form-check d-flex align-items-center mt-2" },
-      [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: { type: "checkbox", value: "", id: "termsAndConditions" },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          {
-            staticClass: "form-check-label my -0",
-            attrs: { for: "termsAndConditions" },
-          },
-          [
-            _vm._v(
-              "\n                                    I agree to the Terms and Conditions & Privacy Policy.\n                                "
-            ),
-          ]
-        ),
-      ]
-    )
   },
   function () {
     var _vm = this

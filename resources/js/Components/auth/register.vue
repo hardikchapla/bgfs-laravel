@@ -62,13 +62,13 @@
                                     placeholder="what's phone number" id="email" />
 
                                 <div class="form-check d-flex align-items-center mt-2">
-                                    <input class="form-check-input" type="checkbox" value="" id="termsAndConditions">
+                                    <input class="form-check-input" type="checkbox"  v-model="terms_condition" id="termsAndConditions">
                                     <label class="form-check-label my -0" for="termsAndConditions">
                                         I agree to the Terms and Conditions & Privacy Policy.
                                     </label>
                                 </div>
 
-                                <button type="button" @click="step = 2" class="button"> Continue</button>
+                                <button type="button" :disables="!first_name || !last_name || !phone || !terms_condition " @click="step = 2" class="button"> Continue</button>
                             </div>
                             <div v-if="step == 2">
                                 <h6><span class="bar"></span>Register<span class="bar"></span></h6>
@@ -78,7 +78,7 @@
                                 <label for="password">Password *</label>
                                 <div class="position-relative">
                                     <input type="password" v-model="password" class="form-control" id="password" />
-                                    <button type="button" class="show-hide-pass">
+                                    <button @click="togglers" type="button" class="show-hide-pass">
                                         <svg width="20" height="17" viewBox="0 0 20 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -87,9 +87,10 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <button type="submit" class="button" :disabled="loading"> <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Submit</button>
-                                    <button type="button" @click="step = 1" class="button">Go Back</button>
+                                <div class="row mt-5">
+                                    <button type="submit" class="button col m-1" :disabled="loading"> <i v-if="loading"
+                                            class="fa fa-spinner fa-spin"></i> Submit</button>
+                                    <button type="button" @click="step = 1" class="button col m-1">Go Back</button>
                                 </div>
                             </div>
                         </form>
@@ -111,12 +112,21 @@ export default {
             last_name: '',
             email: '',
             phone: '',
-            password: ''
+            password: '',
+            terms_condition: false,
         }
     },
     mounted() {
     },
     methods: {
+        togglers() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        },
         _register_user(e) {
             e.preventDefault();
             try {
@@ -142,14 +152,14 @@ export default {
                 }
                 this.loading = true;
                 axios.post(`/register_user`, data)
-                    .then(response => { 
+                    .then(response => {
                         if (response.data.status == 1) {
                             this.$swal({
                                 icon: 'success',
                                 title: response.data.msg,
                             })
                             window.location = '/verification';
-                        } else { 
+                        } else {
                             this.$swal({
                                 icon: 'error',
                                 title: response.data.msg,
