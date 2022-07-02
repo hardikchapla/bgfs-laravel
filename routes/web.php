@@ -27,6 +27,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
     Route::post('reset_password_user', [ 'uses' => 'AuthController@reset_password_user' ]);  
     Route::get('/intended_view', [ 'uses' => 'AuthController@intended_view' ])->name('intended_view')->middleware('auth'); 
     Route::get('/logout', [ 'uses' => 'AuthController@logout' ])->name('logout');  
+
+    Route::get('/login/{social}','AuthController@socialLogin')->where('social','facebook|google');
+    Route::get('/login/{social}/callback','AuthController@handleProviderCallback')->where('social', 'facebook|google');
+
+
     Route::group(['prefix' => 'user', 'middleware' => [ 'auth', 'verified' ] ], function(){
         Route::get('/', [ 'uses' => 'User\UserController@index' ])->name('user.dashboard'); 
     });
