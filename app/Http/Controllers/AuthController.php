@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
+
+use Socialite;
 
 use Carbon\Carbon;
 
@@ -24,45 +26,47 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-
     }
-    
-    public function intended_view(){
-        if(Auth::check()){
+
+    public function intended_view()
+    {
+        if (Auth::check()) {
             $role = Auth::user()->getRoleNames()[0];
-            if($role  == 'USER'){
+            if ($role  == 'USER') {
                 return redirect()->route('user.dashboard');
             }
-            if($role  == 'INSTRUCTOR'){
+            if ($role  == 'INSTRUCTOR') {
                 return redirect()->route('instructor.dashboard');
             }
-            if($role  == 'ADMIN' || $role  == 'SUPER_ADMIN'){
+            if ($role  == 'ADMIN' || $role  == 'SUPER_ADMIN') {
                 return redirect()->route('admin.dashboard');
             }
         }
 
-        Auth::logout();  
-        Session()->invalidate(); 
-        Session()->regenerateToken(); 
+        Auth::logout();
+        Session()->invalidate();
+        Session()->regenerateToken();
         return redirect()->route('login');
     }
-    
-    public function index(){
-        return view('auth.login');
 
+    public function index()
+    {
+        return view('auth.login');
     }
-        
-    public function register(){
+
+    public function register()
+    {
         return view('auth.register');
     }
-        
-    public function verification(){
+
+    public function verification()
+    {
         return view('auth.verification');
     }
-    
-    public function forget_password(){
-        return view('auth.forget_password');
 
+    public function forget_password()
+    {
+        return view('auth.forget_password');
     }
 
     public function login_user(Request $request)
@@ -90,7 +94,7 @@ class AuthController extends Controller
 
     public function register_user(Request $request)
     {
-        try { 
+        try {
             $validator = Validator::make($request->all(), [
                 'first_name' => 'required|max:200',
                 'last_name' => 'required|max:200',
@@ -107,9 +111,9 @@ class AuthController extends Controller
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->password = Hash::make($request->password);
-            if ($user->save()) { 
-                $user->assignRole('USER'); 
-                $user->sendEmailVerificationNotification(); 
+            if ($user->save()) {
+                $user->assignRole('USER');
+                $user->sendEmailVerificationNotification();
                 $credentials = request(['email', 'password']);
                 Auth::attempt($credentials);
                 return response()->json(['status' => 1, 'msg' => 'Registration Successful. Email request verification token sent to ' . $user->email]);
@@ -125,7 +129,7 @@ class AuthController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'token' => 'required', 
+                'token' => 'required',
             ]);
             if ($validator->fails()) {
                 return response()->json(['status' => 0, 'msg' => $validator->errors()->first()]);
@@ -231,12 +235,46 @@ class AuthController extends Controller
             return response()->json(['status' => 0, 'msg' => $th->getMessage()], 500);
         }
     }
- 
-    public function logout(){
-        Auth::logout();  
-        Session()->invalidate(); 
-        Session()->regenerateToken(); 
-        return redirect()->route('login');
+
+
+    public function socialLogin($social)
+    {
+        return Socialite::driver($social)->redirect();
+    }
+  
+    public function handleProviderCallback($social)
+    {
+        $userSocial = Socialite::driver($social)->user();
+        if(!$userSocial->getEmail()){
+            return redirect()->route('login')->with([ 'error' => 'No valid email found' ]);
+        }
+        $user = User::where(['email' => $userSocial->getEmail()])->first();
+        if ($user) {
+            Auth::login($user);
+            return redirect()->route('intended_view');
+        } else {
+            $name = explode(' ',$userSocial->name);
+            $user = new User; 
+            $user->first_name = $name[0];
+            $user->last_name = $name[1];
+            $user->email = $userSocial->email; 
+            // $user->google_id = $userSocial->id;
+            $user->email_verified_at = Carbon::now();
+            $user->password = Hash::make(rand(1, 10000));
+            $user->save();
+            $user->assignRole('USER'); 
+            $user->sendEmailWelcomeNotification();
+            Auth::login($user); 
+            return redirect()->route('intended_view');
+            // return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
+        }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        Session()->invalidate();
+        Session()->regenerateToken();
+        return redirect()->route('login');
+    }
 }

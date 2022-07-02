@@ -28,6 +28,20 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- main -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('error')) 
+    <script>      
+      Swal.fire({
+        title: "{{ session('error') }}", 
+        icon: 'error',   
+        showConfirmButton: false, 
+        position: 'center',
+        timerProgressBar: true,
+      })
+    </script> 
+  @endif
+
+
 </body>
  
 </html>

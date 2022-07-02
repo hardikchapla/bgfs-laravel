@@ -73,7 +73,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <h6>Or sign in with</h6>
                                 <div class="d-flex align-items-center">
-                                    <a href="#" class="fb-login">
+                                    <a href="/login/facebook" class="fb-login">
                                         <svg width="11" height="20" viewBox="0 0 11 20" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -81,7 +81,7 @@
                                                 fill="#1976D3" />
                                         </svg>
                                     </a>
-                                    <a href="#" class="google-login">
+                                    <a href="/login/google" class="google-login">
                                         <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path

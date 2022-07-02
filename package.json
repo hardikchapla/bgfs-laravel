@@ -23,12 +23,7 @@
         "sass": "1.30.0",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.14",
-<<<<<<< HEAD
         "vue-loader": "^15.9.8", 
-=======
-        "vue-loader": "^15.9.8",
-        "vue-quill-editor": "^3.0.6",
->>>>>>> 935c4ce (New)
         "vue-sweetalert2": "^5.0.2",
         "vue-template-compiler": "^2.6.14"
     },
