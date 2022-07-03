@@ -256,15 +256,16 @@ p{
     height: 1px;
     background-color: rgba(var(--secondary-rgb),0.1);
 }
-
-.login-form form label{
+/* .login-form form label */
+.form-label{
     margin: 15px 0 10px;
     color: var(--sub-text-color);
     font-size: 14px;
     line-height: 14px;
     font-weight: bold;
 }
-.login-form form input{
+/* .login-form form input */
+.form-control {
     border-radius: 12px;
     background-color: var(--white);
     height: 45px;

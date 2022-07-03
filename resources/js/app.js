@@ -5,6 +5,7 @@ import VueAxios from 'vue-axios'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css'; 
 
+
 Vue.config.devtools = false;
 // Vue.config.globalProperties.axios = axios;
 
@@ -19,7 +20,7 @@ const options = {
 };      
 
 Vue.use(VueAxios, axios)
-Vue.use(VueSweetalert2, options);  
+Vue.use(VueSweetalert2, options);   
  
 //User
 Vue.component('login_page', require('./Components/auth/login').default); 

@@ -48,9 +48,9 @@
                         </div>
                         <form @submit="_login_user">
                             <h6><span class="bar"></span>Login<span class="bar"></span></h6>
-                            <label for="email">Email Address *</label>
+                            <label class="form-label" for="email">Email Address *</label>
                             <input type="email" v-model="email" class="form-control" id="email" />
-                            <label for="password">Password *</label>
+                            <label class="form-label" for="password">Password *</label>
                             <div class="position-relative">
                                 <input type="password" v-model="password" class="form-control" id="password" />
                                 <button type="button" class="show-hide-pass">

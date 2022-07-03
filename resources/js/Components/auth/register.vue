@@ -49,33 +49,35 @@
                         <form @submit="_register_user">
                             <div v-if="step == 1">
                                 <h6><span class="bar"></span>Register<span class="bar"></span></h6>
-                                <label for="text">First Name *</label>
+                                <label class="form-label" for="text">First Name *</label>
                                 <input type="text" v-model="first_name" class="form-control"
                                     placeholder="what's your first name" id="text" />
 
-                                <label for="email">Last Name *</label>
+                                <label class="form-label" for="email">Last Name *</label>
                                 <input type="email" v-model="last_name" class="form-control"
                                     placeholder="what's your last name" id="email" />
 
-                                <label for="email">Phone Number *</label>
-                                <input type="email" v-model="phone" class="form-control"
-                                    placeholder="what's phone number" id="email" />
+                                <label class="form-label" for="email">Phone Number *</label>  
+                                <vue-phone-number-input :border-radius="0" :clearable="true" :required="true" v-model="phone" />
 
                                 <div class="form-check d-flex align-items-center mt-2">
-                                    <input class="form-check-input" type="checkbox"  v-model="terms_condition" id="termsAndConditions">
+                                    <input class="form-check-input" type="checkbox" v-model="terms_condition"
+                                        id="termsAndConditions">
                                     <label class="form-check-label my -0" for="termsAndConditions">
                                         I agree to the Terms and Conditions & Privacy Policy.
                                     </label>
                                 </div>
 
-                                <button type="button" :disables="!first_name || !last_name || !phone || !terms_condition " @click="step = 2" class="button"> Continue</button>
+                                <button type="button"
+                                    :disabled="!first_name || !last_name || !phone || !terms_condition"
+                                    @click="step = 2" class="button"> Continue</button>
                             </div>
                             <div v-if="step == 2">
                                 <h6><span class="bar"></span>Register<span class="bar"></span></h6>
-                                <label for="email">Email Address *</label>
+                                <label class="form-label" for="email">Email Address *</label>
                                 <input type="email" v-model="email" class="form-control" id="email" />
 
-                                <label for="password">Password *</label>
+                                <label class="form-label" for="password">Password *</label>
                                 <div class="position-relative">
                                     <input type="password" v-model="password" class="form-control" id="password" />
                                     <button @click="togglers" type="button" class="show-hide-pass">
@@ -103,10 +105,13 @@
 </template>
 
 <script>
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
 export default {
     data() {
         return {
-            loading: false,
+            loading: false, 
             step: 1,
             first_name: '',
             last_name: '',
@@ -115,6 +120,9 @@ export default {
             password: '',
             terms_condition: false,
         }
+    },
+    components: {
+        VuePhoneNumberInput: VuePhoneNumberInput
     },
     mounted() {
     },

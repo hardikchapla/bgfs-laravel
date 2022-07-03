@@ -16,7 +16,7 @@
     <!-- responsive -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}"> 
 </head>
-
+ 
 <body>
     <div id="app"> 
         @yield('contents')

@@ -48,7 +48,7 @@
                         </div>
                         <form v-if="!send_reset_password" @submit="_forget_password_user">
                             <h6><span class="bar"></span>Forget Password<span class="bar"></span></h6>
-                            <label for="email">Email Address *</label>
+                            <label class="form-label" for="email">Email Address *</label>
                             <input type="email" v-model="email" class="form-control" id="email" /> 
  
                             <button type="submit" :disabled="loading" class="button" > <i v-if="loading" class="fa fa-spinner fa-spin"></i> Reset Password</button> 

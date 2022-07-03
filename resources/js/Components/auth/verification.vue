@@ -48,7 +48,7 @@
                         </div>
                         <form @submit="_verify_user">
                             <h6><span class="bar"></span>Verification<span class="bar"></span></h6>
-                            <label for="number">OTP *</label>
+                            <label class="form-label" for="number">OTP *</label>
                             <input type="number" v-model="otp" class="form-control" placeholder="Enter OTP sent to your email" id="number" /> 
                             <button type="submit" :disabled="loading" class="button" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Verify</button> 
                         </form>
