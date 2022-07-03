@@ -58,7 +58,7 @@
                                     placeholder="what's your last name" id="email" />
 
                                 <label class="form-label" for="email">Phone Number *</label>  
-                                <vue-phone-number-input :border-radius="0" :clearable="true" :required="true" v-model="phone" />
+                                <vue-phone-number-input @update="phoneResult = $event;" :border-radius="0" :clearable="true" :required="true" v-model="phone" />
 
                                 <div class="form-check d-flex align-items-center mt-2">
                                     <input class="form-check-input" type="checkbox" v-model="terms_condition"
@@ -69,7 +69,7 @@
                                 </div>
 
                                 <button type="button"
-                                    :disabled="!first_name || !last_name || !phone || !terms_condition"
+                                    :disabled="!first_name || !last_name || !phone || !phoneResult.isValid || !terms_condition"
                                     @click="step = 2" class="button"> Continue</button>
                             </div>
                             <div v-if="step == 2">
@@ -119,6 +119,7 @@ export default {
             phone: '',
             password: '',
             terms_condition: false,
+            phoneResult: null,
         }
     },
     components: {

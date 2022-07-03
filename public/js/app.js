@@ -2672,7 +2672,8 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       phone: '',
       password: '',
-      terms_condition: false
+      terms_condition: false,
+      phoneResult: null
     };
   },
   components: {
@@ -22053,6 +22054,11 @@ var render = function () {
                           clearable: true,
                           required: true,
                         },
+                        on: {
+                          update: function ($event) {
+                            _vm.phoneResult = $event
+                          },
+                        },
                         model: {
                           value: _vm.phone,
                           callback: function ($$v) {
@@ -22137,6 +22143,7 @@ var render = function () {
                               !_vm.first_name ||
                               !_vm.last_name ||
                               !_vm.phone ||
+                              !_vm.phoneResult.isValid ||
                               !_vm.terms_condition,
                           },
                           on: {
