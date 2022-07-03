@@ -263,7 +263,7 @@ class AuthController extends Controller
             $user->password = Hash::make(rand(1, 10000));
             $user->save();
             $user->assignRole('USER'); 
-            $user->sendEmailWelcomeNotification();
+            // $user->sendEmailWelcomeNotification();
             Auth::login($user); 
             return redirect()->route('intended_view');
             // return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
