@@ -53,14 +53,14 @@
                             <button type="submit" :disabled="loading" class="button" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Verify</button> 
 
 
-                            <a @click="resendVerification" type="submit" :disabled="loading" class="mt-5 text-center" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Resend Verification Email</a> 
+                            <a @click="resendVerification" :disabled="loading" class="mt-5 text-center" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Resend Verification Email</a> 
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- login wrapper end -->
-    </div>
+    </div> 
 </template>
 
 <script>

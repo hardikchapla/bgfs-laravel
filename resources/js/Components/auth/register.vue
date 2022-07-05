@@ -57,15 +57,16 @@
                                 <input type="email" v-model="last_name" class="form-control"
                                     placeholder="what's your last name" id="email" />
 
-                                <label class="form-label" for="email">Phone Number *</label>
+                                <label class="form-label" for="phone">Phone Number *</label> <br> 
                                 <vue-phone-number-input @update="phoneResult = $event;" :border-radius="0"
-                                    :clearable="true" :no-use-browser-locale="false" :required="true" v-model="phone" />
+                                    :clearable="true" :no-use-browser-locale="false" :required="true" v-model="phone" />  
+                                <!-- <input type="tel" v-model="phone" id="phone" placeholder="Phone Number" class="form-control w-100" />  -->
 
                                 <div class="form-check mt-3">
                                     <input class="form-check-input" type="checkbox" v-model="terms_condition"
                                         id="termsAndConditions">
                                     <label class="form-check-label my-0 mt-1" for="termsAndConditions">
-                                        I agree to the Terms and Conditions & Privacy Policy.
+                                        I agree to the <a href="#">Terms and Conditions & Privacy Policy</a>.
                                     </label>
                                 </div>
 

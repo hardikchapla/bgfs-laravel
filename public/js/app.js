@@ -2659,6 +2659,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -22136,9 +22137,11 @@ var render = function () {
                       _vm._v(" "),
                       _c(
                         "label",
-                        { staticClass: "form-label", attrs: { for: "email" } },
+                        { staticClass: "form-label", attrs: { for: "phone" } },
                         [_vm._v("Phone Number *")]
                       ),
+                      _vm._v(" "),
+                      _c("br"),
                       _vm._v(" "),
                       _c("vue-phone-number-input", {
                         attrs: {
@@ -22202,18 +22205,7 @@ var render = function () {
                           },
                         }),
                         _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-check-label my-0 mt-1",
-                            attrs: { for: "termsAndConditions" },
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    I agree to the Terms and Conditions & Privacy Policy.\n                                "
-                            ),
-                          ]
-                        ),
+                        _vm._m(6),
                       ]),
                       _vm._v(" "),
                       _c(
@@ -22236,7 +22228,7 @@ var render = function () {
               _vm._v(" "),
               _vm.step == 2
                 ? _c("div", [
-                    _vm._m(6),
+                    _vm._m(7),
                     _vm._v(" "),
                     _c(
                       "label",
@@ -22266,7 +22258,7 @@ var render = function () {
                       },
                     }),
                     _vm._v(" "),
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("div", { staticClass: "position-relative" }, [
                       _c("input", {
@@ -22456,6 +22448,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "form-check-label my-0 mt-1",
+        attrs: { for: "termsAndConditions" },
+      },
+      [
+        _vm._v("\n                                    I agree to the "),
+        _c("a", { attrs: { href: "#" } }, [
+          _vm._v("Terms and Conditions & Privacy Policy"),
+        ]),
+        _vm._v(".\n                                "),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("h6", [
       _c("span", { staticClass: "bar" }),
       _vm._v("Register"),
@@ -22598,7 +22609,7 @@ var render = function () {
                 "a",
                 {
                   staticClass: "mt-5 text-center",
-                  attrs: { type: "submit", disabled: _vm.loading },
+                  attrs: { disabled: _vm.loading },
                   on: { click: _vm.resendVerification },
                 },
                 [
