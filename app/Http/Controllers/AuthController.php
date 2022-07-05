@@ -161,6 +161,20 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['status' => 0, 'msg' => $th->getMessage()], 500);
         }
+    } 
+
+    public function resend_verify_user(Request $request)
+    {
+        try { 
+            $user = User::find(Auth()->id());
+            if (!$user) {
+                return response()->json(['status' => 0, 'msg' => 'An error occured, Try again']);
+            }
+            $user->sendEmailVerificationNotification();
+            return response()->json(['status' => 1, 'msg' => 'Email request verification token re-sent to ' . $user->email]);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 0, 'msg' => $th->getMessage()], 500);
+        }
     }
 
     public function resend_verification(Request $request)

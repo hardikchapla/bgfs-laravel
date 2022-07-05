@@ -20,7 +20,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function(){
     Route::get('/register', [ 'uses' => 'AuthController@register' ])->name('register'); 
     Route::post('register_user', [ 'uses' => 'AuthController@register_user' ]);
     Route::get('/verification', [ 'uses' => 'AuthController@verification' ])->name('verification')->middleware('auth'); 
-    Route::post('verify_user', [ 'uses' => 'AuthController@verify_user' ])->middleware('auth');     
+    Route::post('verify_user', [ 'uses' => 'AuthController@verify_user' ])->middleware('auth');   
+    Route::get('resend_verify_user', [ 'uses' => 'AuthController@resend_verify_user' ])->middleware('auth');   
+      
     Route::post('resend_verification', [ 'uses' => 'AuthController@resend_verification' ])->middleware('auth');
     Route::get('forget-password', [ 'uses' => 'AuthController@forget_password' ]); 
     Route::post('forget_password_user', [ 'uses' => 'AuthController@forget_password_user' ]); 

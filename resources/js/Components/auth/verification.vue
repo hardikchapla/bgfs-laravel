@@ -51,6 +51,9 @@
                             <label class="form-label" for="number">OTP *</label>
                             <input type="number" v-model="otp" class="form-control" placeholder="Enter OTP sent to your email" id="number" /> 
                             <button type="submit" :disabled="loading" class="button" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Verify</button> 
+
+
+                            <a @click="resendVerification" type="submit" :disabled="loading" class="mt-5 text-center" > <i v-if="loading" class="fa fa-spinner fa-spin"></i>  Resend Verification Email</a> 
                         </form>
                     </div>
                 </div>
@@ -72,6 +75,32 @@ export default {
     mounted() {
     },
     methods: {
+        resendVerification(e) {
+            e.preventDefault();
+            try { 
+                this.loading = true;
+                axios.get(`/resend_verify_user`)
+                    .then(response => { 
+                        if (response.data.status == 1) {
+                            this.$swal({
+                                icon: 'success',
+                                title: response.data.msg,
+                            }) 
+                        } else { 
+                            this.$swal({
+                                icon: 'error',
+                                title: response.data.msg,
+                            })
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+                    .finally(fsr => this.loading = false)
+            } catch (error) {
+                console.log(error)
+            }
+        },
         _verify_user(e) {
             e.preventDefault();
             try {
@@ -109,6 +138,6 @@ export default {
                 console.log(error)
             }
         }
-    }
+    } 
 }
 </script>

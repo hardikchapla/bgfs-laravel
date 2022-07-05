@@ -2839,6 +2839,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2849,8 +2852,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {},
   methods: {
-    _verify_user: function _verify_user(e) {
+    resendVerification: function resendVerification(e) {
       var _this = this;
+
+      e.preventDefault();
+
+      try {
+        this.loading = true;
+        axios.get("/resend_verify_user").then(function (response) {
+          if (response.data.status == 1) {
+            _this.$swal({
+              icon: 'success',
+              title: response.data.msg
+            });
+          } else {
+            _this.$swal({
+              icon: 'error',
+              title: response.data.msg
+            });
+          }
+        })["catch"](function (error) {
+          console.log(error);
+        })["finally"](function (fsr) {
+          return _this.loading = false;
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    _verify_user: function _verify_user(e) {
+      var _this2 = this;
 
       e.preventDefault();
 
@@ -2869,14 +2900,14 @@ __webpack_require__.r(__webpack_exports__);
         this.loading = true;
         axios.post("/verify_user", data).then(function (response) {
           if (response.data.status == 1) {
-            _this.$swal({
+            _this2.$swal({
               icon: 'success',
               title: response.data.msg
             });
 
             window.location = '/user';
           } else {
-            _this.$swal({
+            _this2.$swal({
               icon: 'error',
               title: response.data.msg
             });
@@ -2884,7 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (error) {
           console.log(error);
         })["finally"](function (fsr) {
-          return _this.loading = false;
+          return _this2.loading = false;
         });
       } catch (error) {
         console.log(error);
@@ -22560,6 +22591,21 @@ var render = function () {
                     ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
                     : _vm._e(),
                   _vm._v("  Verify"),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "mt-5 text-center",
+                  attrs: { type: "submit", disabled: _vm.loading },
+                  on: { click: _vm.resendVerification },
+                },
+                [
+                  _vm.loading
+                    ? _c("i", { staticClass: "fa fa-spinner fa-spin" })
+                    : _vm._e(),
+                  _vm._v("  Resend Verification Email"),
                 ]
               ),
             ]),
