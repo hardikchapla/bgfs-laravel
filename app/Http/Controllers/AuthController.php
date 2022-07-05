@@ -101,7 +101,10 @@ class AuthController extends Controller
                 'email' =>  'required|email|unique:users|max:255',
                 'phone' =>  'required|unique:users',
                 'password' => 'required|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[@!$#%]).*$/|',
+            ],[
+              'password.regex' => 'password must contain one special character and one capital letter'
             ]);
+
             if ($validator->fails()) {
                 return response()->json(['status' => 0, 'msg' => $validator->errors()->first()]);
             }
@@ -116,12 +119,12 @@ class AuthController extends Controller
                 $user->sendEmailVerificationNotification();
                 $credentials = request(['email', 'password']);
                 Auth::attempt($credentials);
-                return response()->json(['status' => 1, 'msg' => 'Registration Successful. Email request verification token sent to ' . $user->email]);
+                return response()->json(['status' => 1, 'msg' => 'Registration Successful.']);
             } else {
                 return response()->json(['status' => 0, 'msg' => 'An error occured']);
             }
         } catch (\Throwable $th) {
-            return response()->json(['status' => 0, 'msg' => $th->getMessage()], 500);
+            return response()->json(['status' => 0, 'msg' => $th->getMessage()]);
         }
     }
 
@@ -241,30 +244,30 @@ class AuthController extends Controller
     {
         return Socialite::driver($social)->redirect();
     }
-  
+
     public function handleProviderCallback($social)
     {
         $userSocial = Socialite::driver($social)->user();
-        if(!$userSocial->getEmail()){
-            return redirect()->route('login')->with([ 'error' => 'No valid email found' ]);
+        if (!$userSocial->getEmail()) {
+            return redirect()->route('login')->with(['error' => 'No valid email found']);
         }
         $user = User::where(['email' => $userSocial->getEmail()])->first();
         if ($user) {
             Auth::login($user);
             return redirect()->route('intended_view');
         } else {
-            $name = explode(' ',$userSocial->name);
-            $user = new User; 
+            $name = explode(' ', $userSocial->name);
+            $user = new User;
             $user->first_name = $name[0];
             $user->last_name = $name[1];
-            $user->email = $userSocial->email; 
+            $user->email = $userSocial->email;
             // $user->google_id = $userSocial->id;
             $user->email_verified_at = Carbon::now();
             $user->password = Hash::make(rand(1, 10000));
             $user->save();
-            $user->assignRole('USER'); 
+            $user->assignRole('USER');
             // $user->sendEmailWelcomeNotification();
-            Auth::login($user); 
+            Auth::login($user);
             return redirect()->route('intended_view');
             // return view('auth.register', ['name' => $userSocial->getName(), 'email' => $userSocial->getEmail()]);
         }

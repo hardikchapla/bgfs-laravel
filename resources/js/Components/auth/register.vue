@@ -57,27 +57,26 @@
                                 <input type="email" v-model="last_name" class="form-control"
                                     placeholder="what's your last name" id="email" />
 
-                                <label class="form-label" for="email">Phone Number *</label>  
-                                <vue-phone-number-input @update="phoneResult = $event;" :border-radius="0" :clearable="true" :required="true" v-model="phone" />
+                                <label class="form-label" for="email">Phone Number *</label>
+                                <vue-phone-number-input @update="phoneResult = $event;" :border-radius="0"
+                                    :clearable="true" :no-use-browser-locale="false" :required="true" v-model="phone" />
 
-                                <div class="form-check d-flex align-items-center mt-2">
+                                <div class="form-check mt-3">
                                     <input class="form-check-input" type="checkbox" v-model="terms_condition"
                                         id="termsAndConditions">
-                                    <label class="form-check-label my -0" for="termsAndConditions">
+                                    <label class="form-check-label my-0 mt-1" for="termsAndConditions">
                                         I agree to the Terms and Conditions & Privacy Policy.
                                     </label>
                                 </div>
 
-                                <button type="button"
-                                    :disabled="!first_name || !last_name || !phone || !phoneResult.isValid || !terms_condition"
-                                    @click="step = 2" class="button"> Continue</button>
+                                <button type="button" @click="moveStep()" class="button"> Continue</button>
                             </div>
                             <div v-if="step == 2">
                                 <h6><span class="bar"></span>Register<span class="bar"></span></h6>
                                 <label class="form-label" for="email">Email Address *</label>
                                 <input type="email" v-model="email" class="form-control" id="email" />
-
-                                <label class="form-label" for="password">Password *</label>
+                                <label class="form-label" for="password">Password * <small>(password must contain one
+                                        special character and one capital letter)</small></label>
                                 <div class="position-relative">
                                     <input type="password" v-model="password" class="form-control" id="password" />
                                     <button @click="togglers" type="button" class="show-hide-pass">
@@ -111,7 +110,7 @@ import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 export default {
     data() {
         return {
-            loading: false, 
+            loading: false,
             step: 1,
             first_name: '',
             last_name: '',
@@ -128,6 +127,30 @@ export default {
     mounted() {
     },
     methods: {
+        moveStep() {
+            if (!this.first_name || !this.last_name || !this.phone) {
+                this.$swal.fire({
+                    icon: 'error',
+                    title: 'All feilds are required!'
+                });
+                return false;
+            }
+            if (!this.phoneResult.isValid) {
+                this.$swal.fire({
+                    icon: 'error',
+                    title: 'Please enter a valid phone number'
+                });
+                return false;
+            }
+            if (!this.terms_condition) {
+                this.$swal.fire({
+                    icon: 'error',
+                    title: 'Please accept terms and consitions'
+                });
+                return false;
+            }
+            this.step = 2
+        },
         togglers() {
             var x = document.getElementById("password");
             if (x.type === "password") {
@@ -167,7 +190,7 @@ export default {
                                 icon: 'success',
                                 title: response.data.msg,
                             })
-                            window.location = '/verification';
+                            .then(() => window.location = '/verification')                            
                         } else {
                             this.$swal({
                                 icon: 'error',
@@ -186,3 +209,9 @@ export default {
     }
 }
 </script>
+    
+<style>
+.input-tel__input {
+    cursor: none !important;
+}
+</style>

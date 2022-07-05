@@ -78,7 +78,7 @@ export default {
                 if ( !this.otp ) {
                     this.$swal.fire({
                         icon: 'error',
-                        title: 'OTP feilds are required!'
+                        title: 'OTP feilds are required!', 
                     });
                     return false;
                 }
