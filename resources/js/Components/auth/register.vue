@@ -61,7 +61,7 @@
                                 <vue-phone-number-input @update="phoneResult = $event;" :border-radius="0"
                                     :clearable="true" :no-use-browser-locale="false" :required="true" v-model="phone" />  
                                 <!-- <input type="tel" v-model="phone" id="phone" placeholder="Phone Number" class="form-control w-100" />  -->
-
+    
                                 <div class="form-check mt-3">
                                     <input class="form-check-input" type="checkbox" v-model="terms_condition"
                                         id="termsAndConditions">
